@@ -22,6 +22,7 @@ a:hover {
 	align-items: center; /*Eje X*/
 	justify-content: flex-start; /*Eje Y*/
 	padding: 10px;
+	border-bottom: solid 1px #FFFFFF;
 }
 header {
 	background-color: #212121;
@@ -32,6 +33,7 @@ header {
 	margin: 0 0 0 auto;
 	color: white;
 	overflow: hidden;
+	text-align:center;
 }
 /*
 li {
@@ -50,4 +52,27 @@ li {
 	padding: 10px;
 	font-size: 24px;
 	color: #D9D9D9;
+}
+#menu li a:hover{
+	color:#FFFFFF;
+	background-color:#AAAAAA;
+}
+#content figure{
+	margin: 0;
+}
+#content figure figcaption {
+	background-color: #212121;
+	top: 10px;
+}
+#content figure figcaption h2{
+	color: #FFF;
+	margin: 0;
+	font-size: 36px;
+}
+#content img {
+	display: block;
+	width: 100%;
+}
+.noticia{
+	border-bottom: solid 1px #cccccc;
 }
