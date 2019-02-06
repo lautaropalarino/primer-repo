@@ -94,7 +94,7 @@ padding: 0 10px;
 .noticia-txt{
 	width: 70%;
 }
-#ultimasNoticias.noticia last-child {
+#ultimasNoticias .noticia:last-child{
 border: none;
 }
 #copyright p{
@@ -102,4 +102,28 @@ border: none;
 	padding: 10px;
 	color: #FFF;
 	text-align: center;
+}
+#tablaPosiciones table{
+	border-collapse: collapse;
+	border: solid 1px #000000;
+	margin: auto;
+	width: 800px;
+}
+#tablaPosiciones table tr{
+	border: solid 1px #000000;
+	
+}
+#tablaPosiciones table th{
+	background-color: red;
+	color: #FFF;
+}
+#tablaPosiciones table td{
+	background-color: #CCCCCC;
+	padding: 10px;
+}
+#tablaPosiciones table td:nth-of-type(odd){/*Impares*/
+
+}
+#tablaPosiciones table td:nth-of-type(even) strong{/*Pares*/
+color: green;
 }
