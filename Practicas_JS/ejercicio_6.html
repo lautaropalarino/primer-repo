@@ -56,18 +56,23 @@
 
 		<script>
 		/* 1) Seleccionar todas las habitaciones */
-
+		var habitaciones = document.querySelectorAll(".habitacion")
 		/* 2) Seleccionar el select */
-
+		var menu = document.queryselector("select[name=habitacion]")
 		/* 3) Asignar la funcion mostrarOpcion al evento correspondiente */
-
+		menu.onchange = mostrarOpcion;
 		/* 4) Pensar una solucion logica para esconder todas las habitaciones cada vez que sea necesario */
+		for(var i = 0; i < habitaciones.length; i++){
+
+			habitaciones[i].classlist.add("esconder")
+
+		}
 
 		function mostrarOpcion(){
 			/* 5) Obtener la opción seleccionada */
-
+			var elegida = menu.value;
 			/* 6) Seleccionar la habitación correspondiente usando un selector dinámico */
-
+			var habitacion = document.querySelector(".habitacion-" + elegida);
 			/* 7) Asignar la clase correspondiente */
 		}
 		</script>
