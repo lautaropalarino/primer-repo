@@ -89,26 +89,13 @@
         <section id="ultimas-noticias">
           <article class="row noticia">
             <div class="noticia-img col-12 col-sm-6 col-lg-4">
-              <img src="https://via.placeholder. class="img-fluid">
+              <img src="https://via.placeholder.com/1000x600/" class="img-fluid">
             </div>  
             <div class="noticia-txt col-12 col-sm-6 col-lg-8">
               <h3 class= "h5 font-weight-bold">{{titulo}}</h3>
               <p class="small"><a href="#">{{autor}}</p></a>
               <p>{{detalle}}</p>
             </div>
-          </article>
-          <article class="row noticia">
-            <div class="noticia-img"></div>
-            <div class="noticia-txt">hola</div>
-          </article>
-          <article class="row noticia">
-            <div class="noticia-img"></div>
-            <div class="noticia-txt">hola</div>
-          </article>
-          <article class="row noticia">
-            <div class="noticia-img"></div>
-            <div class="noticia-txt">hola</div>
-          </article>
         </section>
     </main>
     </div>
@@ -119,11 +106,15 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/noticias.js"></script>
     <script>
-        var noticia = document.querySelector(".noticia");
-        noticia.querySelector("h3").innerText = titulo;
-        noticia.querySelector(".small a").innerText = autor
-        noticia.querySelector("p:last-child").innerText = detalle
-        noticia.querySelector("img").src = "img/" + imagen;
+        for(var i = 0; i < noticias.length; i++){ 
+            var noticia = document.querySelector(".noticia").cloneNode(true);
+            noticia.querySelector("h3").innerText = noticias[i][0];
+            noticia.querySelector(".small a").innerText = noticias[i][1];
+            noticia.querySelector("p:last-child").innerText = noticias[i][2];
+            noticia.querySelector("img").src = "img/" + noticias[i][3];
+            noticia.classList.remove("d-none");
+            document.querySelector("#ultimas-noticias").appendChild(noticia);
+        }
     </script>
 </body>
 
