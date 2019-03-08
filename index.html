@@ -85,27 +85,37 @@
         </a>
     </div>
     <!---SLIDER--->
-    <main class="container-fluid">
+    <!--<main class="container-fluid">
         <section id="ultimas-noticias">
           <article class="row noticia">
             <div class="noticia-img col-12 col-sm-6 col-lg-4">
               <img src="https://via.placeholder.com/1000x600/" class="img-fluid">
             </div>  
-            <div class="noticia-txt col-12 col-sm-6 col-lg-8">
+             <div class="noticia-txt col-12 col-sm-6 col-lg-8">
               <h3 class= "h5 font-weight-bold">{{titulo}}</h3>
               <p class="small"><a href="#">{{autor}}</p></a>
               <p>{{detalle}}</p>
-            </div>
+            </div>*/
         </section>
     </main>
-    </div>
+    </div>--->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/noticias.js"></script>
     <script>
+       ///AJAX///
+       var ajax = new XMLHttpRequest();
+       ajax.open("GET", "js/noticias.json");
+       ajax.onload = function(){
+            if(ajax.status=200){
+                console.log( ajax.response )
+            }
+       };
+       ajax.send(); = 
+
+        /*
         for(var i = 0; i < noticias.length; i++){ 
             var noticia = document.querySelector(".noticia").cloneNode(true);
             noticia.querySelector("h3").innerText = noticias[i][0];
@@ -115,6 +125,16 @@
             noticia.classList.remove("d-none");
             document.querySelector("#ultimas-noticias").appendChild(noticia);
         }
+        
+        var plantilla = document.querySelector(".noticia").cloneNode(true);
+
+        plantilla.querySelector("h3").innerText = noticia.titulo
+        plantilla.querySelector(".small a").innerText = noticia.autor
+        noticia.querySelector("p:last-child").innerText = noticias
+        noticia.querySelector("img").src = "img/" + noticias
+        plantilla.classList.remove("d-none");
+
+        document.querySelector("#ultimas-noticias").appendChild(plantilla);*/
     </script>
 </body>
 
