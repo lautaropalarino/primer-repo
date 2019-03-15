@@ -85,9 +85,9 @@
         </a>
     </div>
     <!---SLIDER--->
-    <!--<main class="container-fluid">
+    <main class="container-fluid">
         <section id="ultimas-noticias">
-          <article class="row noticia">
+          <article class="row noticia d-none">
             <div class="noticia-img col-12 col-sm-6 col-lg-4">
               <img src="https://via.placeholder.com/1000x600/" class="img-fluid">
             </div>  
@@ -95,10 +95,10 @@
               <h3 class= "h5 font-weight-bold">{{titulo}}</h3>
               <p class="small"><a href="#">{{autor}}</p></a>
               <p>{{detalle}}</p>
-            </div>*/
+            </div>
         </section>
     </main>
-    </div>--->
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -107,10 +107,25 @@
     <script>
        ///AJAX///
        var ajax = new XMLHttpRequest();
-       ajax.open("GET", "js/noticias.json");
+       ajax.open("GET", "https://api.sheety.co/e353b928-4720-4c4c-adbf-558215090adc");
        ajax.onload = function(){
             if(ajax.status=200){
-                console.log( ajax.response )
+                //console.log("Antes de parsear:")
+                //console.log(ajax.response)
+                let noticias = JSON.parse(ajax.response)
+                //console.log("Despues de parsear:")
+                //console.log(noticias)
+
+                noticias.forEach(function(noticia){
+                    let ficha = document.querySelector(".noticia").cloneNode(true);
+                    ficha.querySelector("h3").innerText = noticia.titulo;
+                    ficha.querySelector(".small a").innerText = noticia.autor;
+                    ficha.querySelector("p:last-child").innerText = noticia.detalle;
+                    ficha.querySelector("img").src = "img/" + noticia.imagen;
+                    ficha.classList.remove("d-none");
+                    document.querySelector("#ultimas-noticias").appendChild(ficha);
+
+                })
             }
        };
        ajax.send();
