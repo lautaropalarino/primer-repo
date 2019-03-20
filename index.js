@@ -16,6 +16,16 @@ http.createServer(function(request, response){
 	//const file = (CONDICION) ? VERDADER0 : FALSO //<-- Operador Ternario
 	const file = (request.url =="/") ? "index.html" : request.url
 
+	if( file == "/enviar" ){
+		console.log("Este es el body de la peticion HTTP")
+		request.on("data", function(body){
+			let datos = body.toString()
+			console.log(datos)
+		})
+		response.end("Mira la consola de Git Bash")
+	}
+
+
 	let ext = path.extname(file)
 		ext = String(ext)
 		ext = ext.toLowerCase() 
