@@ -1,6 +1,28 @@
 const http = require("http")
 const fs = require("fs")
 const path = require("path")
+const form = require("querystring")
+const loki = require("lokijs")
+
+let noticias = null;
+const db = new loki("noticias.json",{
+    autoload: true,
+    autosave: true, 
+    autosaveInterval: 4000,
+    autoloadCallback : function(){
+    	noticias = db.getCollection("noticias")//<-- Intentar leer noticias del JSON
+    	console.log("Anda")
+    	if( noticias === null){//<-- Si "NO" pudo leerlas, es porque no existen...
+    		noticias=db.addCollection("noticias")//<--... entonces "crear" las nuevas
+    }
+    console.log(noticias)
+	}
+})
+
+
+
+
+
 
 http.createServer(function(request, response){
 	console.log("Servidor Node.js en marcha...")
@@ -20,7 +42,8 @@ http.createServer(function(request, response){
 		console.log("Este es el body de la peticion HTTP")
 		request.on("data", function(body){
 			let datos = body.toString()
-			console.log(datos)
+
+			noticias.insert(form.parse(datos))
 		})
 		response.end("Mira la consola de Git Bash")
 	}
