@@ -84,7 +84,7 @@ http.createServer(function(request, response){
 				response.end(content) //Enviar al cliente/navegador el archivo encontrado
 			}
 	})
-}).listen(80)
+}).listen(process.env.PORT||80)
 
 /*127.0.0.1 llamado a servidor local
 80 puerto default en donde hace el llamado*/
